@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 
-function App() {
+const App = () => {
+  const [progress, setProgress] = useState(0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <LoadingBar
+        color='#f11946'
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
+      <button onClick={() => setProgress(progress + 10)}>Add 10%</button>
+      <button onClick={() => setProgress(progress + 20)}>Add 20%</button>
+      <button onClick={() => setProgress(100)}>Complete</button>
+      <br />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
